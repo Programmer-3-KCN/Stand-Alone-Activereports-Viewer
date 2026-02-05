@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { FC, PropsWithChildren, ReactElement } from "react";
 
-import { APIConnectionChecker } from "../components";
 import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "../libs";
 import { geistMono, geistSans, inter, roboto } from "./fonts";
 import "./globals.css";
@@ -30,7 +29,7 @@ const RootLayout: FC<T> = (props): ReactElement => (
         <ReactQueryProvider>
           <NextAuthProvider>
             {props.children}
-            {(process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_EXAMPLE_MODE === "true") && <APIConnectionChecker />}
+            {/* {(process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_EXAMPLE_MODE === "true") && <APIConnectionChecker />} */}
           </NextAuthProvider>
         </ReactQueryProvider>
       </NextThemesProvider>

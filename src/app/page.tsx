@@ -1,7 +1,7 @@
 import { Metadata, Viewport } from "next";
 import { FC, ReactElement } from "react";
 
-import { Main } from "../layouts/home/modules/main/index-example";
+import HomeLayout from "../layouts/home";
 
 export const viewport: Viewport = {
   initialScale: 1.0,
@@ -49,6 +49,6 @@ export const metadata: Metadata = {
   },
 };
 
-const HomePage: FC = (): ReactElement => <Main />;
+const HomePage: FC = (): ReactElement => <HomeLayout />;
 
 export default HomePage;
