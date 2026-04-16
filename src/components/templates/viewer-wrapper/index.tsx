@@ -15,17 +15,16 @@ export interface IViewerWrapper extends ViewerProps {
   reportUri: string;
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 const ViewerWrapper: FC<IViewerWrapper> = ({ hiddenPrint, reportParam, reportUri, ...props }): ReactElement => {
+  // eslint-disable-next-line
   const ref = createRef<any>();
-  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   useEffect(() => {
     ref.current?.Viewer.open(reportUri, reportParam);
     // eslint-disable-next-line
   }, []);
 
-  if (!hiddenPrint) {
+  if (hiddenPrint) {
     return (
       <>
         <style>

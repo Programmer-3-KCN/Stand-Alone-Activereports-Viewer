@@ -55,12 +55,15 @@ const ViewerWrapperSPM: FC<IViewerWrapperSPM> = ({ decoded, hiddenPrint, reportP
               if (decoded?.userId.toUpperCase() !== "ADMINISTRATOR") {
                 setIsPrint(false);
               }
+
               await cetakApi();
+
               const message = { action: "refreshData" };
 
               if (window.parent !== window) {
                 window.parent.postMessage(message, "*");
               }
+
               if (window.opener) {
                 window.opener.postMessage(message, "*");
               }
@@ -83,7 +86,7 @@ const ViewerWrapperSPM: FC<IViewerWrapperSPM> = ({ decoded, hiddenPrint, reportP
   useEffect(() => {
     const asyncExecute = async () => {
       const res = await GETIsCetakDokumen({ entitas: decoded?.entitas, param1: decoded?.param1, param2: "T" }, decoded?.token);
-      console.log("res", res);
+      // console.log("res", res);
       if (res.length === 0 || decoded?.userId.toUpperCase() === "ADMINISTRATOR") {
         setIsPrint(true);
       }
