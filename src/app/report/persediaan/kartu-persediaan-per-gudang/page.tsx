@@ -31,9 +31,9 @@ const ReportContent: FC = (): ReactElement => {
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       <ViewerWrapper
-        visiblePrint={visiblePrint}
         reportParam={parameter}
         reportUri="/assets/report/persediaan/kartu_persediaan_per_gudang.rdlx-json"
+        visiblePrint={visiblePrint}
       />
     </div>
   );

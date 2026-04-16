@@ -96,6 +96,8 @@ const ViewerWrapperSPM: FC<IViewerWrapperSPM> = ({ decoded, reportParam, reportU
   }, []);
 
   if (visiblePrint) {
+    return <Viewer {...props} ref={ref} />;
+  } else {
     return (
       <>
         <style>
@@ -108,8 +110,6 @@ const ViewerWrapperSPM: FC<IViewerWrapperSPM> = ({ decoded, reportParam, reportU
         <Viewer {...props} ref={ref} />
       </>
     );
-  } else {
-    return <Viewer {...props} ref={ref} />;
   }
 };
 

@@ -25,6 +25,8 @@ const ViewerWrapper: FC<IViewerWrapper> = ({ reportParam, reportUri, visiblePrin
   }, []);
 
   if (visiblePrint) {
+    return <Viewer {...props} ref={ref} />;
+  } else {
     return (
       <>
         <style>
@@ -37,8 +39,6 @@ const ViewerWrapper: FC<IViewerWrapper> = ({ reportParam, reportUri, visiblePrin
         <Viewer {...props} ref={ref} />
       </>
     );
-  } else {
-    return <Viewer {...props} ref={ref} />;
   }
 };
 
