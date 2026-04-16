@@ -14,12 +14,12 @@ export interface ICMD {
   param1: string;
   token: string;
   userId: string;
+  visiblePrint: string;
 }
 
 const ReportContent: FC = (): ReactElement => {
   const searchParams = useSearchParams();
   const cmdParam = searchParams.get("cmd");
-  const visiblePrintParam = searchParams.get("visiblePrint");
 
   // const params = Array.from({ length: 4 }, (_, i) => {
   //   const paramValue = searchParams.get(`param${i + 1}`);
@@ -45,15 +45,15 @@ const ReportContent: FC = (): ReactElement => {
     ].filter(Boolean),
   };
 
-  const visiblePrint = visiblePrintParam === "false" ? false : true;
+  const visiblePrint = decodedCmdObject?.visiblePrint === "false" ? false : true;
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       <ViewerWrapperSPM
         decoded={decodedCmdObject}
-        visiblePrint={visiblePrint}
         reportParam={parameter}
         reportUri="/assets/report/surat-perintah-muat/form_spm.rdlx-json"
+        visiblePrint={visiblePrint}
       />
     </div>
   );
