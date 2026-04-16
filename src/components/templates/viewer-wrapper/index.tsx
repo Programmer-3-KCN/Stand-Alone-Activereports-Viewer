@@ -10,12 +10,12 @@ Core.setLicenseKey(
 const pdf = PdfExport;
 
 export interface IViewerWrapper extends ViewerProps {
-  hiddenPrint: boolean;
   reportParam: object;
   reportUri: string;
+  visiblePrint: boolean;
 }
 
-const ViewerWrapper: FC<IViewerWrapper> = ({ hiddenPrint, reportParam, reportUri, ...props }): ReactElement => {
+const ViewerWrapper: FC<IViewerWrapper> = ({ reportParam, reportUri, visiblePrint, ...props }): ReactElement => {
   // eslint-disable-next-line
   const ref = createRef<any>();
 
@@ -24,7 +24,7 @@ const ViewerWrapper: FC<IViewerWrapper> = ({ hiddenPrint, reportParam, reportUri
     // eslint-disable-next-line
   }, []);
 
-  if (hiddenPrint) {
+  if (visiblePrint) {
     return (
       <>
         <style>

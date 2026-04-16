@@ -12,7 +12,7 @@ const ReportContent: FC = (): ReactElement => {
   const entitasParam = searchParams.get("entitas");
   const tokenParam = searchParams.get("token");
   const paramLimit = searchParams.get("paramLimit");
-  const hiddenPrintParam = searchParams.get("hiddenPrint");
+  const visiblePrintParam = searchParams.get("visiblePrint");
 
   const params = Array.from({ length: 16 }, (_, i) => {
     const paramValue = searchParams.get(`param${i + 1}`);
@@ -28,11 +28,11 @@ const ReportContent: FC = (): ReactElement => {
     ].filter(Boolean),
   };
 
-  const hiddenPrint = hiddenPrintParam === "false" ? false : true;
+  const visiblePrint = visiblePrintParam === "false" ? false : true;
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
-      <ViewerWrapper hiddenPrint={hiddenPrint} reportParam={parameter} reportUri="/assets/report/surat-perintah-muat/daftar_spm.rdlx-json" />
+      <ViewerWrapper visiblePrint={visiblePrint} reportParam={parameter} reportUri="/assets/report/surat-perintah-muat/daftar_spm.rdlx-json" />
     </div>
   );
 };

@@ -14,12 +14,12 @@ const pdf = PdfExport;
 
 export interface IViewerWrapperSPM extends ViewerProps {
   decoded: ICMD | null;
-  hiddenPrint: boolean;
   reportParam: object;
   reportUri: string;
+  visiblePrint: boolean;
 }
 
-const ViewerWrapperSPM: FC<IViewerWrapperSPM> = ({ decoded, hiddenPrint, reportParam, reportUri, ...props }): ReactElement => {
+const ViewerWrapperSPM: FC<IViewerWrapperSPM> = ({ decoded, reportParam, reportUri, visiblePrint, ...props }): ReactElement => {
   // eslint-disable-next-line
   const ref = createRef<any>();
   const [isPrint, setIsPrint] = useState(false);
@@ -95,7 +95,7 @@ const ViewerWrapperSPM: FC<IViewerWrapperSPM> = ({ decoded, hiddenPrint, reportP
     // eslint-disable-next-line
   }, []);
 
-  if (hiddenPrint) {
+  if (visiblePrint) {
     return (
       <>
         <style>

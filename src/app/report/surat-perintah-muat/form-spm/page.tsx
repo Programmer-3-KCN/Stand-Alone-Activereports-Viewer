@@ -19,7 +19,7 @@ export interface ICMD {
 const ReportContent: FC = (): ReactElement => {
   const searchParams = useSearchParams();
   const cmdParam = searchParams.get("cmd");
-  const hiddenPrintParam = searchParams.get("hiddenPrint");
+  const visiblePrintParam = searchParams.get("visiblePrint");
 
   // const params = Array.from({ length: 4 }, (_, i) => {
   //   const paramValue = searchParams.get(`param${i + 1}`);
@@ -45,13 +45,13 @@ const ReportContent: FC = (): ReactElement => {
     ].filter(Boolean),
   };
 
-  const hiddenPrint = hiddenPrintParam === "false" ? false : true;
+  const visiblePrint = visiblePrintParam === "false" ? false : true;
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       <ViewerWrapperSPM
         decoded={decodedCmdObject}
-        hiddenPrint={hiddenPrint}
+        visiblePrint={visiblePrint}
         reportParam={parameter}
         reportUri="/assets/report/surat-perintah-muat/form_spm.rdlx-json"
       />
