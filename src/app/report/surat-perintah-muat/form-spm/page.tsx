@@ -4,8 +4,17 @@ import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import { FC, ReactElement, Suspense } from "react";
 
-import { IViewerWrapper } from "@/src/components/templates/viewer-wrapper";
-const ViewerWrapper = dynamic<IViewerWrapper>(async () => (await import("@/src/components/templates/viewer-wrapper")).default, { ssr: false });
+import { IViewerWrapperSPM } from "@/src/components/templates/viewer-wrapper-spm";
+const ViewerWrapperSPM = dynamic<IViewerWrapperSPM>(async () => (await import("@/src/components/templates/viewer-wrapper-spm")).default, {
+  ssr: false,
+});
+
+export interface ICMD {
+  entitas: string;
+  param1: string;
+  token: string;
+  userId: string;
+}
 
 const ReportContent: FC = (): ReactElement => {
   const searchParams = useSearchParams();
@@ -16,6 +25,18 @@ const ReportContent: FC = (): ReactElement => {
   //   const paramValue = searchParams.get(`param${i + 1}`);
   //   return paramValue ? { Name: `param${i + 1}`, Value: [paramValue] } : null;
   // }).filter(Boolean);
+
+  let decodedCmdObject: ICMD | null = null;
+
+  if (cmdParam) {
+    try {
+      decodedCmdObject = JSON.parse(atob(cmdParam));
+    } catch (error) {
+      console.error("Failed To Decode:", error);
+    }
+  }
+
+  console.log("Decoded:", decodedCmdObject);
 
   const parameter = {
     ReportParams: [
@@ -28,7 +49,12 @@ const ReportContent: FC = (): ReactElement => {
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
-      <ViewerWrapper hiddenPrint={hiddenPrint} reportParam={parameter} reportUri="/assets/report/surat-perintah-muat/form_spm.rdlx-json" />
+      <ViewerWrapperSPM
+        decoded={decodedCmdObject}
+        hiddenPrint={hiddenPrint}
+        reportParam={parameter}
+        reportUri="/assets/report/surat-perintah-muat/form_spm.rdlx-json"
+      />
     </div>
   );
 };
