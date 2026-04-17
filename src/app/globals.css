@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "../styles/light-blue-ui.css";
-@import "../styles/light-blue-viewer.css";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 

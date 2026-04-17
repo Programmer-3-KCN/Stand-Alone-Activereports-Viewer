@@ -5,6 +5,8 @@ import { FC, PropsWithChildren, ReactElement } from "react";
 import { NextAuthProvider, NextThemesProvider, ReactQueryProvider } from "../libs";
 import { geistMono, geistSans, inter, roboto } from "./fonts";
 import "./globals.css";
+import "@/src/styles/light-blue-ui.css";
+import "@/src/styles/light-blue-viewer.css";
 
 export const metadata: Metadata = {
   authors: [{ name: "Gede Dewo Wahyu M.W", url: "https://github.com/gdwmw" }],
