@@ -1,9 +1,11 @@
+import { User } from "lucide-react";
 import Image from "next/image";
 import { FC, ReactElement } from "react";
-import { FaUser } from "react-icons/fa";
 
 import { twm } from "@/src/libs";
-import { TAvatarSize } from "@/src/types";
+
+export const AVATAR_SIZE_OPTIONS = ["lg", "md", "sm"] as const;
+export type TAvatarSize = (typeof AVATAR_SIZE_OPTIONS)[number];
 
 export interface IAvatar {
   className?: string;
@@ -46,7 +48,7 @@ export const Avatar: FC<IAvatar> = (props): ReactElement => {
         props.className,
       )}
     >
-      <FaUser className="text-gray-400 dark:text-gray-200" size={props.iconSize ? props.iconSize : icon} />
+      <User className="text-gray-400 dark:text-gray-200" size={props.iconSize ? props.iconSize : icon} />
     </div>
   );
 };

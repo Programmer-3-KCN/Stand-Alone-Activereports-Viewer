@@ -1,9 +1,9 @@
 import { fireEvent, render } from "@testing-library/react";
-import { FaCrown } from "react-icons/fa";
+import { Crown } from "lucide-react";
 
 import { ExampleA, IExampleA } from ".";
 
-/* eslint-disable better-tailwindcss/no-unregistered-classes */
+/* eslint-disable better-tailwindcss/no-unknown-classes */
 
 const component = (props: { onClickFn?: () => void } & Partial<IExampleA>) => (
   <ExampleA
@@ -17,7 +17,7 @@ const component = (props: { onClickFn?: () => void } & Partial<IExampleA>) => (
     type="button"
     variant={props.variant ?? "solid"}
   >
-    <FaCrown data-testid="testing-icon" />
+    <Crown data-testid="testing-icon" />
     This is testing text
   </ExampleA>
 );
