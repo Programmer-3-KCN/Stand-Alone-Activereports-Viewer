@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "clean": "rimraf .next",
     "storybook": "storybook dev -p 6006 --ci",
     "storybook:build": "storybook build",
